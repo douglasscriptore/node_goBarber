@@ -1,0 +1,16 @@
+{% for hour in available %}
+<label
+  class="{% if hour.available == false %}disabled{% endif %}"
+  for="item-{{ hour.time }}"
+>
+  {% if hour.available == true %}
+  <input
+    type="radio"
+    name="date"
+    value="{{ hour.value }}"
+    id="item-{{ hour.time }}"
+  />
+  {% endif %}
+  {{ hour.time }}
+</label>
+{% endfor %}

@@ -12,6 +12,8 @@ const UserController = require('./app/controllers/UserController')
 const SessionController = require('./app/controllers/SessionController')
 const DashboardController = require('./app/controllers/DashboardController')
 const FileController = require('./app/controllers/FileController')
+const AppointmentController = require('./app/controllers/AppointmentController')
+const AvailableController = require('./app/controllers/AvailableController')
 
 // adiciona varial global para que todas as views do nunjuks fiquem sabendo das mensagens de erro
 routes.use((req, res, next) => {
@@ -33,5 +35,8 @@ routes.use('/app', authMiddleware)
 
 routes.get('/app/logout', SessionController.destroy)
 routes.get('/app/dashboard', DashboardController.index)
+routes.get('/app/appointments/new/:providerId', AppointmentController.create)
+routes.post('/app/appointments/new/:providerId', AppointmentController.store)
+routes.get('/app/available/:providerId', AvailableController.index)
 
 module.exports = routes
