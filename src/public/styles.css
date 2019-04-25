@@ -184,7 +184,7 @@ body {
   color: #444;
 }
 
-ul.providers {
+ul.providers ul.schedules {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -200,12 +200,42 @@ ul.providers {
   justify-content: space-between;
 }
 
+.schedule {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .provider div {
   display: flex;
   align-items: center;
 }
 
-.provider img {
+.schedule div {
+  display: flex;
+  align-items: center;
+}
+
+.schedule div .info {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5px;
+}
+
+.schedule div .info p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.provider img,
+.schedule img {
   width: 48px;
   height: 48px;
   border-radius: 50%;

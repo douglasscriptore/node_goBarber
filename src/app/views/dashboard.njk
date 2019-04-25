@@ -1,4 +1,5 @@
-{% extends "_layouts/default.njk" %} {% block body %}
+{% extends "_layouts/default.njk" %} {% block body %} {% if user.provider ===
+false %}
 <div class="content">
   <strong>Olá, {{ user.name }} </strong>
   <p>Inicie um agendamento ecolhendo um profissional abaixo:</p>
@@ -16,4 +17,25 @@
 
   <a href="/app/logout" class="logout">Sair</a>
 </div>
-{% endblock %}
+{% else %}
+<div class="content">
+  <strong>Olá, {{ user.name }}</strong>
+  <p>Essa é sua agenda:</p>
+
+  <ul class="schedules">
+    {% for appointment in appointments %}
+    <li class="schedule">
+      <div>
+        <img src="/files/{{ appointment.user.avatar }}" alt="avatar" />
+        <div class="info">
+          <strong>{{ appointment.user.name }}</strong>
+          <p>Agendado para: {{ appointment.date_formated }}</p>
+        </div>
+      </div>
+    </li>
+    {%endfor%}
+  </ul>
+
+  <a href="/app/logout" class="logout">Sair</a>
+</div>
+{% endif %} {% endblock %}
